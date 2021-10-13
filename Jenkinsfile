@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git([url: 'https://github.com/Aslan7-sudo/Node-Jenkins', branch: 'master', credentialsId: 'PrashanthGanta-github-token'])
+        git([url: 'https://github.com/Aslan7-sudo/Node-Jenkins')
 
       }
     }
