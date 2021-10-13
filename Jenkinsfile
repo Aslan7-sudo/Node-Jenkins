@@ -4,7 +4,7 @@ pipeline {
     BUILD_NAME = 'devops-project-node-app'
     IMAGE_TAG = "$BUILD_NUMBER"
     AWS_DEFAULT_REGION = "us-east-1"
-    AWS_ACCOUNT_ID="350465793522"
+    AWS_ACCOUNT_ID="854390731207"
     dockerRun = "docker run -p 8080:8081 -d --name node-app $imagename:$IMAGE_TAG"
     dockerKill= "docker rm -f node-app"
 
@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git([url: 'https://github.com/PrashanthGanta/Devops_project_sampleNode_app.git', branch: 'develop', credentialsId: 'PrashanthGanta-github-token'])
+        git([url: 'https://github.com/Aslan7-sudo/Node-Jenkins', branch: 'master', credentialsId: 'PrashanthGanta-github-token'])
 
       }
     }
