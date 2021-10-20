@@ -6,14 +6,14 @@ pipeline {
     AWS_DEFAULT_REGION = "us-east-1"
     AWS_ACCOUNT_ID="854390731207"
     dockerRun = "docker run -p 8080:8081 -d --name node-app $imagename:$IMAGE_TAG"
-    dockerKill= "docker rm -f node-app"
+    killcontainer= "docker rm -f node-app"
 
   }
   agent any
   stages {
     stage('Cloning Git') {
       steps {
-        git([url: 'https://github.com/Aslan7-sudo/Node-Jenkins', branch: 'master', credentialsId: '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'])
+        git([url: 'https://github.com/Aslan7-sudo/Node-Jenkins', branch: 'master', credentialsId: 'Aslan7-sudo'])
 
       }
     }
@@ -43,7 +43,7 @@ pipeline {
       stage('Run Container on Dev Server'){
         steps{
           sshagent(['d08c0287-ec43-4b7f-8591-f5cb34a88ba7']) {
-          sh "ssh -o StrictHostKeyChecking=no ubuntu@34.234.73.215 ${dockerKill}"
+          sh "ssh -o StrictHostKeyChecking=no ubuntu@34.234.73.215 ${killcontainer}"
           sh "ssh -o StrictHostKeyChecking=no ubuntu@34.234.73.215 ${dockerRun}"
          }
      }
